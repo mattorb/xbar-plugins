@@ -17,6 +17,10 @@ if [ "$COUNT" -ne 0 ]; then
   echo "📬 $COUNT | color=white"
 else
   echo "📭"
+  echo "---"
+  echo "🎉 INBOX ZERO 🎉"
+  echo "$ENTRIES | href=https://mail.google.com"
+  exit 0
 fi
 echo "---"
 
