@@ -13,15 +13,15 @@ RESULT=$(curl -s -u $USERNAME:$PASSWORD "https://mail.google.com/mail/feed/atom"
 COUNT=$(echo "$RESULT" | grep -E -o '<fullcount>[0-9]*' | cut -c 12-)
 ENTRIES=$(echo "$RESULT" | sed -n 's|<title>\(.*\)</title>|\1|p' | tr -s ' ')
 
-if [ "$COUNT" -ne 0 ]; then
-  echo "📬 $COUNT | color=white"
-else
+if [ "$COUNT" -eq 0 ]; then
   echo "📭"
   echo "---"
   echo "🎉 INBOX ZERO 🎉"
   echo "$ENTRIES | href=https://mail.google.com"
   exit 0
 fi
+
+echo "📬"
 echo "---"
 
 count=0
